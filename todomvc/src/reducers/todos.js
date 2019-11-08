@@ -7,13 +7,30 @@ import {
   CLEAR_COMPLETED,
 } from '../constants/ActionTypes';
 
-const initialState = [
-  {
-    text: 'Use Redux',
-    completed: false,
-    id: 0,
-  },
+const libraries = [
+  'Redux',
+  'React',
+  'webpack',
+  'gulp',
+  'Lodash',
+  'styled-components',
+  'emotion',
+  'Babel',
+  'Jest',
+  'MobX',
+  'Node.js',
 ];
+const initialState = new Array(2000).fill(null).map((_, index) => {
+  const versionMajor = Math.floor(Math.random() * 10);
+  const versionMinor = Math.floor(Math.random() * 100);
+  const library = libraries[Math.floor(Math.random() * libraries.length)];
+
+  return {
+    text: `Upgrade ${library} to v${versionMajor}.${versionMinor}`,
+    completed: false,
+    id: index,
+  };
+});
 
 export default function todos(state = initialState, action) {
   switch (action.type) {

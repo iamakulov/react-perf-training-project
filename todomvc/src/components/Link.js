@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import './Link.css';
 
 const Link = ({ active, children, setFilter }) => (
-  <a
-    className={classnames({ selected: active })}
+  <button
+    className={classnames({ filter: true, filter_selected: active })}
     style={{ cursor: 'pointer' }}
     onClick={() => setFilter()}
   >
     {children}
-  </a>
+  </button>
 );
 
 Link.propTypes = {
