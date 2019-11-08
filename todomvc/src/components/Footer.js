@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import FilterLink from '../containers/FilterLink';
+import FooterCount from '../components/FooterCount';
 import {
   SHOW_ALL,
   SHOW_COMPLETED,
@@ -13,18 +14,23 @@ const FILTER_TITLES = {
   [SHOW_COMPLETED]: 'Completed',
 };
 
-const Footer = props => {
-  const { activeCount, completedCount, onClearCompleted } = props;
-  const itemWord = activeCount === 1 ? 'item' : 'items';
+const Footer = ({
+  activeCount,
+  visibilityFilter,
+  completedCount,
+  onClearCompleted,
+}) => {
   return (
     <footer className="footer">
       <span className="todo-count">
-        <strong>{activeCount || 'No'}</strong> {itemWord} left
+        <FooterCount getCount={() => activeCount} />
       </span>
       <ul className="filters">
         {Object.keys(FILTER_TITLES).map(filter => (
           <li key={filter}>
-            <FilterLink filter={filter}>{FILTER_TITLES[filter]}</FilterLink>
+            <FilterLink active={filter === visibilityFilter} filter={filter}>
+              {FILTER_TITLES[filter]}
+            </FilterLink>
           </li>
         ))}
       </ul>
