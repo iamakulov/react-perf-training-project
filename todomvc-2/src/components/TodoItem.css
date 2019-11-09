@@ -1,0 +1,14 @@
+.view {
+  position: relative;
+  will-change: transform;
+}
+
+.view::after {
+  counter-reset: todos-count var(--todos-count);
+  counter-increment: todo-index;
+  content: counter(todo-index) '/' counter(todos-count);
+
+  position: absolute;
+  right: 50px;
+  top: 20px;
+}
