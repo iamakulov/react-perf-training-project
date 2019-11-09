@@ -1,3 +1,9 @@
 .todo-list {
   counter-reset: todo-index;
+  height: 300px;
+  overflow: auto;
+}
+
+.todo-list li.completed > * {
+  background: #f5f5f5;
 }
