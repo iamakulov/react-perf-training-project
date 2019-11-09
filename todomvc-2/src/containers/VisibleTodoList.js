@@ -27,6 +27,7 @@ const getVisibleTodos = createSelector(
 
 const mapStateToProps = state => ({
   filteredTodos: getVisibleTodos(state),
+  activeTodosCount: state.todos.filter(t => !t.completed).length,
 });
 
 const mapDispatchToProps = dispatch => ({

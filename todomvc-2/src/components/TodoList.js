@@ -3,16 +3,18 @@ import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 import './TodoList.css';
 
-const TodoList = ({ filteredTodos, actions }) => (
-  <ul
-    className={`todo-list todos-${filteredTodos.length}`}
-    style={{ '--todos-count': filteredTodos.length }}
-  >
-    {filteredTodos.map(todo => (
-      <TodoItem key={todo.id} todo={todo} {...actions} />
-    ))}
-  </ul>
-);
+const TodoList = ({ filteredTodos, activeTodosCount, actions }) => {
+  return (
+    <ul
+      className={`todo-list todos-${activeTodosCount}`}
+      style={{ '--active-todos-count': activeTodosCount }}
+    >
+      {filteredTodos.map(todo => (
+        <TodoItem key={todo.id} todo={todo} {...actions} />
+      ))}
+    </ul>
+  );
+};
 
 TodoList.propTypes = {
   filteredTodos: PropTypes.arrayOf(

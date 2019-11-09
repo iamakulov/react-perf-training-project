@@ -4,7 +4,7 @@
 }
 
 .view::after {
-  counter-reset: todos-count var(--todos-count);
+  counter-reset: todos-count var(--active-todos-count);
   counter-increment: todo-index;
   content: counter(todo-index) '/' counter(todos-count);
 
